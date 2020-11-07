@@ -17,14 +17,22 @@ const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
+let intervalId;
+let isActive = false;
+
 startBtn.addEventListener('click', onStartBtnClick);
 
 stopBtn.addEventListener('click', onStopBtnClick);
 
 function onStartBtnClick() {
-  const intervalId = setInterval(() => {
+  if (isActive) {
+    return;
+  }
+  intervalId = setInterval(() => {
+    isActive = true;
     const randonColor =
       colors[randomIntegerFromInterval(0, colors.length - 1)];
+    console.log(randonColor);
 
     bodyEl.style.backgroundColor = randonColor;
   }, 1000);
@@ -32,4 +40,5 @@ function onStartBtnClick() {
 
 function onStopBtnClick() {
   clearInterval(intervalId);
+  isActive = false;
 }
