@@ -1,3 +1,5 @@
+// import './css/common.css';
+
 const colors = [
   '#FFFFFF',
   '#2196F3',
